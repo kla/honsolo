@@ -8,10 +8,13 @@ module Honsolo
         data[name].to_i
       end
 
-      def find(name)
-        id = find_id(name)
+      def find(name_or_id)
+        id = name.is_a?(Fixnum) ? name_or_id : find_id(name_or_id)
         data = Honsolo.post("f" => "get_all_stats", "account_id[0]" => id)
-        Honsolo.to_ostruct(data, id)
+        character = Honsolo.to_ostruct(data["all_stats"],id)
+        character.last_match = Honsolo.to_ostruct(data["last_match"])
+        character.clan_info  = Honsolo.to_ostruct(data["clan_info"],id)
+        character
       end
     end
   end
