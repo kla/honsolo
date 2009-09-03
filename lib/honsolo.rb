@@ -2,6 +2,7 @@ require 'net/http'
 require 'ostruct'
 require 'php_serialize'
 require 'honsolo/character'
+require 'honsolo/clan'
 
 module Honsolo
   MasterServer = URI.parse('http://masterserver.hon.s2games.com/client_requester.php')
