@@ -28,5 +28,9 @@ class CharacterTest < ActiveSupport::TestCase
     should "have clan_info" do
       assert @character.clan_info
     end
+
+    should "raise exception if not found" do
+      assert_raise(Honsolo::CharacterNotFound) { Honsolo::Character.find(-1) }
+    end
   end
 end

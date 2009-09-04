@@ -8,6 +8,7 @@ module Honsolo
   MasterServer = URI.parse('http://masterserver.hon.s2games.com/client_requester.php')
 
   class CharacterNotFound < StandardError; end
+  class ClanNotFound < StandardError; end
 
   class << self
     def post(params)

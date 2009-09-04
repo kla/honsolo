@@ -9,8 +9,10 @@ module Honsolo
       end
 
       def find(name_or_id)
-        id = name.is_a?(Fixnum) ? name_or_id : find_id(name_or_id)
+        id = name_or_id.is_a?(Fixnum) ? name_or_id : find_id(name_or_id)
         data = Honsolo.post("f" => "get_all_stats", "account_id[0]" => id)
+        raise Honsolo::CharacterNotFound, name_or_id if data["all_stats"].is_a?(Array) && data["all_stats"].empty?
+
         character = Honsolo.to_ostruct(data["all_stats"],id)
         character.last_match = Honsolo.to_ostruct(data["last_match"])
         character.clan_info  = Honsolo.to_ostruct(data["clan_info"],id)
