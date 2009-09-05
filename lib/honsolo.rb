@@ -1,6 +1,6 @@
 require 'net/http'
 require 'ostruct'
-require File.dirname(__FILE__) + '/php_serialize'
+require 'php_serialize'
 require File.dirname(__FILE__) + '/honsolo/character'
 require File.dirname(__FILE__) + '/honsolo/clan'
 
